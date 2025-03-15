@@ -3,6 +3,7 @@ package com.andy.PrenotazioneTavoli.service;
 import com.andy.PrenotazioneTavoli.entity.Utente;
 import com.andy.PrenotazioneTavoli.repository.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,7 +35,10 @@ public class UtenteService {
         utenteRepository.deleteById(id);
     }
 
+
+    private PasswordEncoder passwordEncoder;
     public Utente creaUtente(Utente utente) {
+        utente.setPassword(passwordEncoder.encode(utente.getPassword()));
         return utenteRepository.save(utente);
     }
 }
