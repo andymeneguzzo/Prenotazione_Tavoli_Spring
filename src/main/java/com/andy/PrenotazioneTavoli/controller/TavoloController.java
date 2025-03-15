@@ -1,6 +1,7 @@
 package com.andy.PrenotazioneTavoli.controller;
 
 import com.andy.PrenotazioneTavoli.entity.Tavolo;
+import com.andy.PrenotazioneTavoli.exception.ResourceNotFoundException;
 import com.andy.PrenotazioneTavoli.service.TavoloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class TavoloController {
     @GetMapping("/{id}")
     public Tavolo getTavoloById(@PathVariable Long id) {
         return tavoloService.trovaTavoloPerId(id)
-                .orElseThrow(() -> new RuntimeException("Tavolo non trovato!"));
+                .orElseThrow(() -> new ResourceNotFoundException("Tavolo non trovato!"));
     }
 
     @PostMapping

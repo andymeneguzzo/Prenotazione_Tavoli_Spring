@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PrenotazioneService {
@@ -25,6 +26,10 @@ public class PrenotazioneService {
 
     public List<Prenotazione> trovaPrenotazioniPerData(LocalDate data) {
         return prenotazioneRepository.findByDataPrenotazione(data);
+    }
+
+    public Optional<Prenotazione> trovaPrenotazionePerId(Long id) {
+        return prenotazioneRepository.findById(id);
     }
 
     public List<Prenotazione> listaPrenotazioni() {
