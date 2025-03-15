@@ -19,7 +19,7 @@ public class PrenotazioneService {
         if(tavoloDisponibile(prenotazione)) {
             return prenotazioneRepository.save(prenotazione);
         } else {
-            throw new RuntimeException("Tavolo non disponibile per questa data e ora!");
+            throw new IllegalStateException("Tavolo non disponibile per questa data e ora!");
         }
     }
 
