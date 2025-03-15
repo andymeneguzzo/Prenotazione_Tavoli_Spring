@@ -29,4 +29,8 @@ public class TavoloService {
     public void eliminaTavolo(Long id) {
         tavoloRepository.deleteById(id);
     }
+
+    public Tavolo salvaTavolo(Tavolo tavolo) {
+        return tavoloRepository.save(tavolo);
+    }
 }
