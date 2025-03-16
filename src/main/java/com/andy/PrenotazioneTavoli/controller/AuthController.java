@@ -1,5 +1,7 @@
 package com.andy.PrenotazioneTavoli.controller;
 
+import com.andy.PrenotazioneTavoli.dto.AuthRequest;
+import com.andy.PrenotazioneTavoli.dto.AuthenticationResponse;
 import com.andy.PrenotazioneTavoli.security.JwtUtil;
 import org.apache.catalina.connector.Response;
 import org.apache.tomcat.Jar;
