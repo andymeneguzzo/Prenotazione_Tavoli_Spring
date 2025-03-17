@@ -27,52 +27,22 @@ public class PrenotazioneTavoliApplication implements CommandLineRunner {
 	@Autowired
 	private PrenotazioneService prenotazioneService;
 
+	@Autowired
+	private TavoloRepository tavoloRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(PrenotazioneTavoliApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) {
-		System.out.println("🚀 Avvio test dei Service...");
-
-		// Creazione di un Tavolo
-		Tavolo tavolo1 = new Tavolo(1, 4, "Sala Principale");
-		Tavolo tavolo2 = new Tavolo(2, 2, "Terrazza");
-		tavoloService.aggiungiTavolo(tavolo1);
-		tavoloService.aggiungiTavolo(tavolo2);
-
-		System.out.println("✅ Tavoli creati:");
-		tavoloService.listaTavoli().forEach(System.out::println);
-
-		// Creazione di un Utente
-		Utente cliente = new Utente("Mario Rossi", "mario@gmail.com", "password123", "CLIENTE");
-		Utente admin = new Utente("Admin User", "admin@ristorante.com", "admin123", "ADMIN");
-		utenteService.registraUtente(cliente);
-		utenteService.registraUtente(admin);
-
-		System.out.println("✅ Utenti registrati:");
-		utenteService.listaUtenti().forEach(System.out::println);
-
-		// Creazione di una Prenotazione valida
-		Prenotazione prenotazione1 = new Prenotazione(
-				cliente,
-				tavolo1,
-				LocalDate.now(),
-				LocalTime.of(20, 00),
-				2,
-				4,
-				"Finestra richiesta"
-		);
-
-		try {
-			prenotazioneService.creaPrenotazione(prenotazione1);
-			System.out.println("✅ Prenotazione effettuata con successo!");
-		} catch (RuntimeException e) {
-			System.out.println("❌ Errore nella prenotazione: " + e.getMessage());
+		if (tavoloRepository.count() == 0) { // Verifica se la tabella è vuota prima di inserire
+			tavoloRepository.save(new Tavolo(1, 4, "Sala Principale"));
+			tavoloRepository.save(new Tavolo(2, 2, "Terrazza"));
+			tavoloRepository.save(new Tavolo(3, 6, "Sala Esterna"));
+			System.out.println("Dati iniziali caricati con successo.");
+		} else {
+			System.out.println("Dati già presenti, nessun inserimento.");
 		}
-
-		// Verifica lista prenotazioni
-		System.out.println("📌 Lista prenotazioni:");
-		prenotazioneService.listaPrenotazioni().forEach(System.out::println);
 	}
 }
