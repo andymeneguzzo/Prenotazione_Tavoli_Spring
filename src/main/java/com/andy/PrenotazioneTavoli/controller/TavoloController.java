@@ -1,5 +1,6 @@
 package com.andy.PrenotazioneTavoli.controller;
 
+import org.springframework.ui.Model;
 import com.andy.PrenotazioneTavoli.entity.Tavolo;
 import com.andy.PrenotazioneTavoli.exception.ResourceNotFoundException;
 import com.andy.PrenotazioneTavoli.service.TavoloService;
@@ -14,6 +15,13 @@ public class TavoloController {
 
     @Autowired
     private TavoloService tavoloService;
+
+    @GetMapping("/tavoli")
+    public String mostraTavoli(Model model) {
+        List<Tavolo> tavoli = tavoloService.listaTavoli();
+        model.addAttribute("tavoli", tavoli);
+        return "tavoli";
+    }
 
     @GetMapping
     public List<Tavolo> getAllTavoli() {
