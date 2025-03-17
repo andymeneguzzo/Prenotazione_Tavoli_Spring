@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lista Tavoli</title>
 </head>
 <body>
+    <h1>Lista Tavoli Disponibili</h1>
 
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Numero</th>
+                <th>Posti</th>
+                <th>Area</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="tavolo: ${tavoli}">
+                <td th:text="${tavolo.id}">ID</td>
+                <td th:text="${tavolo.numero}">Numero</td>
+                <td th:text="${tavolo.posti}">Posti</td>
+                <td th:text="${tavolo.area}">Area</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
