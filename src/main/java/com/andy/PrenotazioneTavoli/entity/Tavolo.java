@@ -10,42 +10,45 @@ public class Tavolo {
     private Long id;
 
     private int numero;
-    private int posti;
-    private String area;
 
-    // Costruttore vuoto (necessario per JPA)
+    private int posti;
+
+    private String sala;
+
     public Tavolo() {}
 
-    // Costruttore con parametri
-    public Tavolo(int numero, int posti, String area) {
+    public Tavolo(int numero, int posti, String sala) {
         this.numero = numero;
         this.posti = posti;
-        this.area = area;
+        this.sala = sala;
     }
 
-    // Getters & Setters
-    public Long getId() {return id;}
+    // Getter & Setter
+    public Long getId() {
+        return id;
+    }
     public void setId(Long id) {
         this.id = id;
     }
 
-    public int getNumero() {return numero;}
+    public int getNumero() {
+        return numero;
+    }
     public void setNumero(int numero) {
         this.numero = numero;
     }
 
-    public int getPosti() {return posti;}
+    public int getPosti() {
+        return posti;
+    }
     public void setPosti(int posti) {
         this.posti = posti;
     }
 
-    public String getArea() {return area;}
-    public void setArea(String area) {
-        this.area = area;
+    public String getSala() {
+        return sala;
     }
-
-    @Override
-    public String toString() {
-        return "Tavolo [id=" + id + ", numero=" + numero + ", posti=" + posti + ", area=" + area + "]";
+    public void setSala(String sala) {
+        this.sala = sala;
     }
 }
