@@ -12,75 +12,78 @@ public class Prenotazione {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "utente_id")
-    private Utente utente;
-
-    @ManyToOne
     @JoinColumn(name = "tavolo_id")
     private Tavolo tavolo;
 
+    @ManyToOne
+    @JoinColumn(name = "utente_id")
+    private Utente utente;
+
     private LocalDate dataPrenotazione;
     private LocalTime oraPrenotazione;
+
     private int durataInOre;
-    private int numeroPersone;
+
     private String note;
 
-    // Costruttore vuoto per JPA
     public Prenotazione() {}
 
-    public Prenotazione(Utente utente, Tavolo tavolo, LocalDate dataPrenotazione,
-                        LocalTime oraPrenotazione, int durataInOre, int numeroPersone, String note) {
-        this.utente = utente;
+    public Prenotazione(Tavolo tavolo, Utente utente, LocalDate dataPrenotazione, LocalTime oraPrenotazione, int durataInOre, String note) {
         this.tavolo = tavolo;
+        this.utente = utente;
         this.dataPrenotazione = dataPrenotazione;
         this.oraPrenotazione = oraPrenotazione;
         this.durataInOre = durataInOre;
-        this.numeroPersone = numeroPersone;
         this.note = note;
     }
 
-    // Getter e Setter
-    public Long getId() {return id;}
-    public Utente getUtente() {
-        return utente;
+    // Getter & Setter
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setUtente(Utente utente) {this.utente = utente;}
     public Tavolo getTavolo() {
         return tavolo;
     }
+    public void setTavolo(Tavolo tavolo) {
+        this.tavolo = tavolo;
+    }
 
-    public void setTavolo(Tavolo tavolo) {this.tavolo = tavolo;}
+    public Utente getUtente() {
+        return utente;
+    }
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
+
     public LocalDate getDataPrenotazione() {
         return dataPrenotazione;
     }
+    public void setDataPrenotazione(LocalDate dataPrenotazione) {
+        this.dataPrenotazione = dataPrenotazione;
+    }
 
-    public void setDataPrenotazione(LocalDate dataPrenotazione) {this.dataPrenotazione = dataPrenotazione;}
     public LocalTime getOraPrenotazione() {
         return oraPrenotazione;
     }
+    public void setOraPrenotazione(LocalTime oraPrenotazione) {
+        this.oraPrenotazione = oraPrenotazione;
+    }
 
-    public void setOraPrenotazione(LocalTime oraPrenotazione) {this.oraPrenotazione = oraPrenotazione;}
     public int getDurataInOre() {
         return durataInOre;
     }
-
-    public void setDurataInOre(int durataInOre) {this.durataInOre = durataInOre;}
-    public int getNumeroPersone() {
-        return numeroPersone;
+    public void setDurataInOre(int durataInOre) {
+        this.durataInOre = durataInOre;
     }
 
-    public void setNumeroPersone(int numeroPersone) {this.numeroPersone = numeroPersone;}
     public String getNote() {
         return note;
     }
-
-    public void setNote(String note) {this.note = note;}
-
-    @Override
-    public String toString() {
-        return "Prenotazione [id=" + id + ", utente=" + utente.getNome() + ", tavolo=" + tavolo.getNumero()
-                + ", dataPrenotazione=" + dataPrenotazione + ", oraPrenotazione=" + oraPrenotazione
-                + ", durataInOre=" + durataInOre + ", numeroPersone=" + numeroPersone + ", note=" + note + "]";
+    public void setNote(String note) {
+        this.note = note;
     }
 }
