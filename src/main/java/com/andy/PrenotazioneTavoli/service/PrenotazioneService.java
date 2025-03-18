@@ -22,7 +22,7 @@ public class PrenotazioneService {
         return prenotazioneRepository.save(prenotazione);
     }
 
-    public Prenotazione trovaPrenotazione(Long id) {
+    public Prenotazione trovaPrenotazionePerId(Long id) {
         Optional<Prenotazione> prenotazione = prenotazioneRepository.findById(id);
         return prenotazione.orElse(null); // gestiamo eccezione
     }
