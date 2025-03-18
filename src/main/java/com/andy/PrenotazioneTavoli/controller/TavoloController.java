@@ -1,5 +1,6 @@
 package com.andy.PrenotazioneTavoli.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import com.andy.PrenotazioneTavoli.entity.Tavolo;
 import com.andy.PrenotazioneTavoli.exception.ResourceNotFoundException;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/tavoli")
 public class TavoloController {
 

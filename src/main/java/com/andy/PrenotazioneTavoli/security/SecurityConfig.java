@@ -39,9 +39,9 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/home", "/css/**", "/js/**").permitAll() // Permetti accesso a Home e risorse statiche
+                        .requestMatchers("/", "/home", "/tavoli", "/css/**", "/js/**").permitAll() // Permetti accesso a Home e risorse statiche
                         .requestMatchers("/api/auth/**", "/api/utenti/registrazione").permitAll() // Accesso libero alle API di autenticazione
-                        .anyRequest().authenticated() // Tutto il resto richiede autenticazione
+                        .requestMatchers("/api/**").authenticated() // Tutto il resto richiede autenticazione
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
